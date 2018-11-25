@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\schnpius\Documents\jee-semesterarbeit_JEE\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2489486274.index
+3824197095.index
+1170467310.index
+2475800049.index
+3657843375.index
+298046086.index
