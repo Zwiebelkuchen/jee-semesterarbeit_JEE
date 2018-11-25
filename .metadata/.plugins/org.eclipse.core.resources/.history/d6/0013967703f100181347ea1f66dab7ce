@@ -26,10 +26,6 @@
 			rendered="#{not empty signinController.customer.email}"
 			outcome="sell"
 			value="#{msg['sell']}"/>
-			<h:link
-			rendered="#{not empty signinController.customer.email}"
-			outcome="search"
-			value="#{msg['search']}"/>
 	</nav>
 	</header>
 </html>
