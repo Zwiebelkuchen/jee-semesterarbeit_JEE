@@ -5,8 +5,7 @@
     xmlns:f="http://java.sun.com/jsf/core">
 <ui:define name="content">
 	<h:form
-		id="registerForm"
-		prependId="false">
+		id="registerForm">
 		<h:message for="registerForm"/>
 		<h:panelGrid columns="3">
 			<f:facet name="header">
@@ -26,7 +25,7 @@
 				id="register" 
 				action="#{registerController.persist}" value="#{msg['register']}"/>             
 			<h:commandButton action="index" value="#{msg['cancel']}"/>
-			<h:message for="index"/>
+			<h:message for="register"/>
 		</h:panelGrid>
 	</h:form>
 </ui:define>

@@ -6,10 +6,7 @@
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
 
-<f:view locale="#{localeController.lang}">
-    <f:loadBundle
-        var="msg"
-        basename="messages" />
+<f:loadBundle basename="messages" var="msg"/>
 
 <h:head>
     <title>
@@ -35,5 +32,5 @@
   </ui:insert>
 
 </h:body>
-</f:view>
+
 </html>
