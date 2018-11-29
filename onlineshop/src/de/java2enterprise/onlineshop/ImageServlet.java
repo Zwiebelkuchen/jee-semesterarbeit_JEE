@@ -13,30 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/image")
 public class ImageServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
-	@PersistenceContext
-	private EntityManager em;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(
-		HttpServletRequest request, 
-		HttpServletResponse response) 
-		throws ServletException, IOException {
+    @PersistenceContext
+    private EntityManager em;
 
-		try {
-			String id = request.getParameter("id");
-			Query query = em.createQuery(
-				"select i.foto "
-				+ "from Item i "
-				+ "where i.id = :id");
-			query.setParameter("id", Long.parseLong(id));
-			byte[] foto = (byte[])query.getSingleResult();
-			response.reset();
-			response.getOutputStream().write(foto);
-			
-		} catch(Exception ex) {
-			throw new ServletException(ex.getMessage());
-		}
-	}
+    protected void doGet(
+            HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
 
+        try {
+            String id = request.getParameter("id");
+            Query query = em.createQuery(
+                            "select i.foto "
+                                    + "from Item i "
+                                    + "where i.id = :id");
+            query.setParameter(
+                    "id",
+                    Long.parseLong(id));
+            byte[] foto = (byte[]) query.getSingleResult();
+            response.reset();
+            response.getOutputStream().write(foto);
+        } catch (Exception ex) {
+            throw new ServletException(ex.getMessage());
+        }
+    }
 }

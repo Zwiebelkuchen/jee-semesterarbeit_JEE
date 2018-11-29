@@ -1,8 +1,7 @@
 package de.java2enterprise.onlineshop;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.logging.Level;
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -21,36 +20,40 @@ import de.java2enterprise.onlineshop.model.Item;
 @Named
 @RequestScoped
 public class BuyController implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 1L;
-	
-	@PersistenceContext
-	private EntityManager em;
-	
-	@Resource
-	private UserTransaction ut;
+    private final static Logger log = Logger
+            .getLogger(BuyController.class.toString());
 
-	public void update(Long id) {
-		try {
-			ut.begin();
-			Item item = em.find(Item.class, id);
-			item.setBuyer(getCustomer());
-			item.setSold(new Date());
-			em.merge(item);
-			ut.commit();
-		} catch(Exception e) {
-			Logger.getLogger(BuyController.class.getCanonicalName())
-				.log(Level.WARNING, "Fehler: " + e.getMessage());
-		}
-		
-	}
-	
-	private Customer getCustomer() {
-		FacesContext ctx = FacesContext.getCurrentInstance();
-		ELContext elc = ctx.getELContext();
-		ELResolver elr = ctx.getApplication().getELResolver();
-		SigninController signinController = 
-				(SigninController) elr.getValue(elc, null, "signinController");
-		return signinController.getCustomer();
-	}
+    @PersistenceContext
+    private EntityManager em;
+
+    @Resource
+    private UserTransaction ut;
+
+    public String update(Long id) {
+        FacesContext ctx = FacesContext
+                .getCurrentInstance();
+        ELContext elc = ctx.getELContext();
+        ELResolver elr = ctx.getApplication()
+                .getELResolver();
+        SigninController signinController = (SigninController) elr
+                .getValue(
+                        elc,
+                        null,
+                        "signinController");
+
+        Customer customer = signinController.getCustomer();
+        try {
+            ut.begin();
+            Item item = em.find(Item.class, id);
+            item.setBuyer(customer);
+            item.setSold(LocalDateTime.now());
+            ut.commit();
+            log.info(item + " bought by " + customer);
+        } catch (Exception e) {
+            log.severe(e.getMessage());
+        }
+        return "/search.jsf";
+    }
 }

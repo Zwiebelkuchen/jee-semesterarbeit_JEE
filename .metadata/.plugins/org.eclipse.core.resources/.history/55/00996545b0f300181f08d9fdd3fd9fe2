@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15431842318640" configfile="/onlineshop/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" id="pf15431858495431" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15431858495432 pf15431858495433 pf15431858495434 pf15431858495435 pf15431858495436" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf15431858495437" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf15431858495432" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" id="pf15431858495438" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15431858495433" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="signin.xhtml" id="pf15431858495439" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf15431858495434" path="/signin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="sell.xhtml" id="pf154318584954310" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf15431858495435" path="/sell.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="search.xhtml" id="pf154318584954311" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf15431858495436" path="/search.xhtml"/>
+  <links id="pf15431858495432" target="pf15431858495437" source="pf15431858495431" outcome="index" redirect="true"/>
+  <links id="pf15431858495433" target="pf15431858495438" source="pf15431858495431" outcome="register" redirect="true"/>
+  <links id="pf15431858495434" target="pf15431858495439" source="pf15431858495431" outcome="signin" redirect="true"/>
+  <links id="pf15431858495435" target="pf154318584954310" source="pf15431858495431" outcome="sell" redirect="true"/>
+  <links id="pf15431858495436" target="pf154318584954311" source="pf15431858495431" outcome="search" redirect="true"/>
+</pageflow:Pageflow>

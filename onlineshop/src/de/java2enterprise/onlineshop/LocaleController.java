@@ -1,4 +1,5 @@
 package de.java2enterprise.onlineshop;
+
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
@@ -21,6 +22,6 @@ public class LocaleController implements Serializable {
 
     public String change(String lang) {
         this.lang = lang;
-        return "index";
+        return "/index.jsf";
     }
 }
