@@ -26,7 +26,6 @@
 <!--                         gelieferte Verkaufsobjekt vorhanden ist -->
 <!-- 				         und man darf erst ein Item kaufen wenn man eingeloggt ist -->
                         <h:commandButton
-                            rendered="#{not empty signinController.customer.email}"
                             disabled="#{not empty item.sold}"
                             value="#{msg['buy']}"
                             action="#{buyController.update(item.id)}" />

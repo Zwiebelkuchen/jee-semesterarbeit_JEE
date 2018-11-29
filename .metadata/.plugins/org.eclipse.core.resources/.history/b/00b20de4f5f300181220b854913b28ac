@@ -19,14 +19,16 @@
         <h:link
             outcome="signin"
             value="#{msg['signin']}" />
-        <h:link
-            outcome="search"
-            value="#{msg['search']}" />
-            <!-- Anpassung: Hyperlink ist nur sichtbar wenn man eingeloggt ist  -->
+<!-- Anpassung: Hyperlink ist nur sichtbar wenn man eingeloggt ist  -->
         <h:link
             rendered="#{not empty signinController.customer.email}"
             outcome="sell"
             value="#{msg['sell']}" />
+<!-- Anpassung: Hyperlink ist nur sichtbar wenn man eingeloggt ist  -->
+        <h:link
+            rendered="#{not empty signinController.customer.email}"
+            outcome="search"
+            value="#{msg['search']}" />
         <br />
     </nav>
     <h:form>
