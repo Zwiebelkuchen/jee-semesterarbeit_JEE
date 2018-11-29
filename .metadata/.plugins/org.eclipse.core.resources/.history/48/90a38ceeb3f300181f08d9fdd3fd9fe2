@@ -19,14 +19,10 @@
         <h:link
             outcome="signin"
             value="#{msg['signin']}" />
-<!-- Anpassung: Hyperlink ist nur sichtbar wenn man eingeloggt ist  -->
         <h:link
-            rendered="#{not empty signinController.customer.email}"
             outcome="sell"
             value="#{msg['sell']}" />
-<!-- Anpassung: Hyperlink ist nur sichtbar wenn man eingeloggt ist  -->
         <h:link
-            rendered="#{not empty signinController.customer.email}"
             outcome="search"
             value="#{msg['search']}" />
         <br />
@@ -35,7 +31,6 @@
         <h:commandButton
             action="#{localeController.change('en')}"
             image="#{resource['img:us.gif']}" />
- 
         <h:commandButton
             action="#{localeController.change('de')}"
             image="#{resource['img:de.gif']}" />

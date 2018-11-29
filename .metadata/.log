@@ -322,3 +322,6 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-11-29 09:19:33.985
 !MESSAGE No repository found at file:/C:/Users/schnpius/Downloads/eclipselink/.
+
+!ENTRY org.eclipse.jface.text 2 0 2018-11-29 10:03:39.892
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'

@@ -2,7 +2,6 @@ package de.java2enterprise.onlineshop.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -89,14 +88,12 @@ public class Item implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    //Änderung: Musste von LocalDateTime auf Date geändert werden 
 
-    public Date getSold() {
+    public LocalDateTime getSold() {
         return this.sold;
     }
-    //Änderung: Musste von LocalDateTime auf Date geändert werden 
 
-    public void setSold(Date sold) {
+    public void setSold(LocalDateTime sold) {
         this.sold = sold;
     }
 

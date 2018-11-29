@@ -22,9 +22,9 @@
                         <h:outputText value="#{item.price}" />
                         <h:outputText value="#{msg['item.sold']}:" />
                         <h:outputText value="#{item.sold}" />
+                        <h:commandButton
 <!--                         Änderung: Button wird deaktiviert sobald ein Verkaufsdatum für das  -->
 <!--                         gelieferte Verkaufsobjekt vorhanden ist -->
-                        <h:commandButton
                             disabled="#{not empty item.sold}"
                             value="#{msg['buy']}"
                             action="#{buyController.update(item.id)}" />
