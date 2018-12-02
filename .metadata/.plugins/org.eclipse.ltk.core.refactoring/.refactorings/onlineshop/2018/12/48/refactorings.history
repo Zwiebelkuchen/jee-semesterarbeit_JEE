@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SearchController.java&apos; to &apos;de.java2enterprise.onlineshop.SearchController.java&apos;&#x0D;&#x0A;- Original project: &apos;onlineshop&apos;&#x0D;&#x0A;- Destination element: &apos;de.java2enterprise.onlineshop.SearchController.java&apos;&#x0D;&#x0A;- Original element: &apos;de.java2enterprise.onlineshop.SearchController.java&apos;" description="Copy compilation unit" destination="/src&lt;de.java2enterprise.onlineshop{SearchController.java" element1="/src&lt;de.java2enterprise.onlineshop{SearchController.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1543782080542" units="1" version="1.0"/>
+</session>

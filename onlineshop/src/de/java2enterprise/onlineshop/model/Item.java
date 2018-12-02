@@ -1,8 +1,8 @@
 package de.java2enterprise.onlineshop.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -10,7 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -47,9 +50,24 @@ public class Item implements Serializable {
     @ManyToOne
     private Customer buyer;
 
+    // unidirektionale Verknüpfung zu Observed Tabelle
+    @ManyToMany 
+    @JoinTable(
+    		schema="ONLINESHOP",
+    		name="OBSERVED",
+    		joinColumns=@JoinColumn(name="ITEM_ID", referencedColumnName="ID"),
+    		inverseJoinColumns=@JoinColumn(name="CUSTOMER_ID", referencedColumnName="ID")
+    		) 
+    private Set<Customer> observed ;
+    
+    
     public Item() {
     }
 
+ // Getter und Setter Methode fuer die Observed Tabelle
+    public Set<Customer> getObserved() {return observed; }
+    public void setObserved(Set<Customer> observed) {this.observed = observed;}
+    
     public Long getId() {
         return this.id;
     }

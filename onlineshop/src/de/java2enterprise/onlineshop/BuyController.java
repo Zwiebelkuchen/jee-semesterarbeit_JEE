@@ -1,10 +1,8 @@
 package de.java2enterprise.onlineshop;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.logging.Logger;
-
 import javax.annotation.Resource;
 import javax.el.ELContext;
 import javax.el.ELResolver;

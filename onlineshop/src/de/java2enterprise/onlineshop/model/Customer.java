@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -51,6 +52,25 @@ public class Customer implements Serializable {
     @OneToMany(mappedBy = "buyer")
     private Set<Item> purchases;
 
+    
+  //Mapping zur Observed Tabelle fuer bidirektionale Vebindung
+    @ManyToMany(mappedBy="observed") 
+    private Set<Item> observers; 
+    
+ // Getter und Setter Methode fuer die Observed Tabelle
+    public Set<Item> getObservers() { return observers; }
+    public void setObservers(Set<Item> observers) { this.observers = observers; }
+        
+    //Convenience-Methoden fuer besseres Handling von ManyToMany Tabellen
+    public void observe(Item item) {if(this.observers == null) {this.observers = new HashSet<Item>(); } 
+    this.observers.add(item);
+    if(item.getObserved() == null) { item.setObserved(new HashSet<Customer>()); } 
+    item.getObserved().add(this); }
+
+    public void unobserve(Item item) {
+    this.observers.remove(item);
+    item.getObserved().remove(this);}
+    
     public Customer() {
     }
 
