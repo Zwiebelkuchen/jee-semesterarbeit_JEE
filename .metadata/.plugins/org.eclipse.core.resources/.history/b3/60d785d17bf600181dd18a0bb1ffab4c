@@ -65,33 +65,4 @@ public class ObservationController implements Serializable {
         }
         return "/search.jsf";
     }   
-    
-    /**
-     * Methode fuer das entfernen eines Item von der Beobachtungsliste
-     * @param id
-     * @return
-     */
-    public String deleteObservation(Long id) {
-        FacesContext ctx = FacesContext
-                .getCurrentInstance();
-        ELContext elc = ctx.getELContext();
-        ELResolver elr = ctx.getApplication()
-                .getELResolver();
-        SigninController signinController = (SigninController) elr
-                .getValue(
-                        elc,
-                        null,
-                        "signinController");
-        Customer customer = signinController.getCustomer();
-        try {
-            ut.begin();
-            Item item = em.find(Item.class, id);
-            customer.unobserve(item);
-            ut.commit();
-            log.info(item + " bought by " + customer);
-        } catch (Exception e) {
-            log.severe(e.getMessage());
-        }
-        return "/obervationslist.jsf";
-    }  
-  }
+}

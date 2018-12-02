@@ -38,13 +38,6 @@
 					</f:facet>
 					<h:outputText value="#{item.sold}" />
 				</h:column>
-				<h:column>
-<f:facet name="header">
-</f:facet>
-<h:commandButton 
-image="#{resource['img:loeschen.jpg']}" 
-action="#{observationController.deleteObservation(item.id)}" />
-</h:column>
 		</h:dataTable>
 		</h:form>
 	</ui:define>
