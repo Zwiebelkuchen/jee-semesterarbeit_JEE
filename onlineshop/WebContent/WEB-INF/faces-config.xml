@@ -41,6 +41,13 @@
 		</to-view-id>
 		<redirect/>
 	</navigation-case>
+	<navigation-case>
+		<from-outcome>observationlist</from-outcome>
+		<to-view-id>
+			/observationlist.xhtml
+		</to-view-id>
+		<redirect/>
+	</navigation-case>
 </navigation-rule>
 </faces-config>
 

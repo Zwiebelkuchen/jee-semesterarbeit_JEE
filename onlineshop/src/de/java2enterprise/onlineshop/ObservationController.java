@@ -30,6 +30,11 @@ public class ObservationController implements Serializable {
     @Resource
     private UserTransaction ut;
 
+    /**
+     * Methode um ein Item auf die Ueberwachungsliste zu setzen
+     * @param id
+     * @return
+     */
     public String setObservation(Long id) {
         FacesContext ctx = FacesContext
                 .getCurrentInstance();
@@ -59,31 +64,5 @@ public class ObservationController implements Serializable {
             log.severe(e.getMessage());
         }
         return "/search.jsf";
-    }
-    
-    public String deleteObservation(Long id) {
-        FacesContext ctx = FacesContext
-                .getCurrentInstance();
-        ELContext elc = ctx.getELContext();
-        ELResolver elr = ctx.getApplication()
-                .getELResolver();
-        SigninController signinController = (SigninController) elr
-                .getValue(
-                        elc,
-                        null,
-                        "signinController");
-        Customer customer = signinController.getCustomer();
-        try {
-            ut.begin();
-            Item item = em.find(Item.class, id);
-            customer.unobserve(item);
-            ut.commit();
-            log.info(item + " bought by " + customer);
-        } catch (Exception e) {
-            log.severe(e.getMessage());
-        }
-        return "/obervationslist.jsf";
-    }
-    
-    
+    }   
 }

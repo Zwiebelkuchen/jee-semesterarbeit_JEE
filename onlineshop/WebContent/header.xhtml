@@ -27,6 +27,10 @@
             rendered="#{not empty signinController.customer.email}"
             outcome="sell"
             value="#{msg['sell']}" />
+            <h:link
+rendered="#{not empty signinController.customer.email}"
+outcome="observationlist"
+value="#{msg['observationlist']}" />
         <br />
     </nav>
     <h:form>
