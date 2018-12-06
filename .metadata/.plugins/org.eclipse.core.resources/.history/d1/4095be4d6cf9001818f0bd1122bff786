@@ -47,7 +47,7 @@ public class ObservationController implements Serializable {
 			Item item = em.find(Item.class, id);
 			customer.observe(item);
 			ut.commit();
-			FacesMessage m = new FacesMessage("Successfully put the item " + item.getTitle() + " on the watch list");
+			FacesMessage m = new FacesMessage("Added article " + item.getTitle() + " to observed list");
 			FacesContext.getCurrentInstance().addMessage("searchForm", m);
 			log.info(item + " bought by " + customer);
 
