@@ -19,71 +19,54 @@ import de.java2enterprise.onlineshop.model.Item;
 @Named
 @RequestScoped
 public class ObservationController implements Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private final static Logger log = Logger
-            .getLogger(ObservationController.class.toString());
+	private final static Logger log = Logger.getLogger(ObservationController.class.toString());
 
-    @PersistenceContext
-    private EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
 
-    @Resource
-    private UserTransaction ut;
+	@Resource
+	private UserTransaction ut;
 
-    public String setObservation(Long id) {
-        FacesContext ctx = FacesContext
-                .getCurrentInstance();
-        ELContext elc = ctx.getELContext();
-        ELResolver elr = ctx.getApplication()
-                .getELResolver();
-        SigninController signinController = (SigninController) elr
-                .getValue(
-                        elc,
-                        null,
-                        "signinController");
+	public String setObservation(Long id) {
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		ELContext elc = ctx.getELContext();
+		ELResolver elr = ctx.getApplication().getELResolver();
+		SigninController signinController = (SigninController) elr.getValue(elc, null, "signinController");
 
-        Customer customer = signinController.getCustomer();
-        try {
-            ut.begin();
-            Item item = em.find(Item.class, id);
-            customer.observe(item);
-            ut.commit();
-            FacesMessage m = new FacesMessage(
-                    "Added article " + item.getTitle() + " to observed list");
-            FacesContext
-                    .getCurrentInstance()
-                    .addMessage("searchForm", m);
-            log.info(item + " bought by " + customer);
-           
-        } catch (Exception e) {
-            log.severe(e.getMessage());
-        }
-        return "/search.jsf";
-    }
-    
-    public String deleteObservation(Long id) {
-        FacesContext ctx = FacesContext
-                .getCurrentInstance();
-        ELContext elc = ctx.getELContext();
-        ELResolver elr = ctx.getApplication()
-                .getELResolver();
-        SigninController signinController = (SigninController) elr
-                .getValue(
-                        elc,
-                        null,
-                        "signinController");
-        Customer customer = signinController.getCustomer();
-        try {
-            ut.begin();
-            Item item = em.find(Item.class, id);
-            customer.unobserve(item);
-            ut.commit();
-            log.info(item + " bought by " + customer);
-        } catch (Exception e) {
-            log.severe(e.getMessage());
-        }
-        return "/obervationslist.jsf";
-    }
-    
-    
+		Customer customer = signinController.getCustomer();
+		try {
+			ut.begin();
+			Item item = em.find(Item.class, id);
+			customer.observe(item);
+			ut.commit();
+			FacesMessage m = new FacesMessage("Successfully put the item " + item.getTitle() + " on the watch list");
+			FacesContext.getCurrentInstance().addMessage("searchForm", m);
+			log.info(item + " bought by " + customer);
+
+		} catch (Exception e) {
+			log.severe(e.getMessage());
+		}
+		return "/search.jsf";
+	}
+
+	public String deleteObservation(Long id) {
+		FacesContext ctx = FacesContext.getCurrentInstance();
+		ELContext elc = ctx.getELContext();
+		ELResolver elr = ctx.getApplication().getELResolver();
+		SigninController signinController = (SigninController) elr.getValue(elc, null, "signinController");
+		Customer customer = signinController.getCustomer();
+		try {
+			ut.begin();
+			Item item = em.find(Item.class, id);
+			customer.unobserve(item);
+			ut.commit();
+			log.info(item + " bought by " + customer);
+		} catch (Exception e) {
+			log.severe(e.getMessage());
+		}
+		return "/obervationslist.jsf";
+	}
+
 }

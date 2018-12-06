@@ -6,11 +6,10 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
         <h:form id="searchForm" prependId="false">
-          <h:message for="searchForm"/>
             <h:dataTable
                 value="#{searchController.items}"
                 var="item">
-                
+                  <h:message for="searchForm"/>
                 <h:column>
                     <h:panelGrid columns="2">
                         <h:outputText value="#{msg['id']}:" />
