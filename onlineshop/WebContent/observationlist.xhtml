@@ -5,8 +5,8 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 	<ui:define name="content">
 		<h:form>
-			<h:dataTable value="#{observationListController.findItemList()}" var="item"
-				styleClass="ordertable" headerClass="ordertableheader"
+			<h:dataTable value="#{observationListController.findItemList()}"
+				var="item" styleClass="ordertable" headerClass="ordertableheader"
 				rowClasses="ordertableoddrow,ordertableevenrow">
 				<h:column>
 					<f:facet name="header">
@@ -39,13 +39,17 @@
 					<h:outputText value="#{item.sold}" />
 				</h:column>
 				<h:column>
-<f:facet name="header">
-</f:facet>
-<h:commandButton 
-image="#{resource['img:loeschen.jpg']}" 
-action="#{observationController.deleteObservation(item.id)}" />
-</h:column>
-		</h:dataTable>
+					<f:facet name="header">
+					</f:facet>
+					<h:commandButton image="#{resource['img:loeschen.jpg']}"
+						action="#{observationController.deleteObservation(item.id)}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandButton image="#{resource['img:lupe.jpg']}"
+						action="#{viewItemController.setId(item.id)}" />
+				</h:column>
+			</h:dataTable>
 		</h:form>
 	</ui:define>
 </ui:composition>

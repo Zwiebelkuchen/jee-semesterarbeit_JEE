@@ -25,7 +25,7 @@
 						<h:commandButton
 							rendered="#{not empty signinController.customer.email}"
 							disabled="#{not empty item.sold}" value="#{msg['buy']}"
-							action="#{buyController.update(item.id)}" />
+							action="#{buyController.bySearch(item.id)}" />
 						<h:commandButton
 							rendered="#{not empty signinController.customer.email}"
 							value="#{msg['observe']}"
