@@ -31,7 +31,7 @@ public class BuyController implements Serializable {
 	private UserTransaction ut;
 
 	/**
-	 * Methode fuer das Kaufen im search View, mit der Rueckgabe der View seach
+	 * Methode für das Kaufen in der View search
 	 * @param id
 	 * @return
 	 */

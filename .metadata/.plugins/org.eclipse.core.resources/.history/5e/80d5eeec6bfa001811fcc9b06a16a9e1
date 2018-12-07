@@ -36,7 +36,7 @@ public class ViewItemController implements Serializable {
 	}
 
 	public String setId(Long id) {
-		this.id = id;
+		this.id=id;
 		return "/viewItem.jsf";
 	}
 
@@ -45,8 +45,7 @@ public class ViewItemController implements Serializable {
 	}
 
 	/**
-	 * Methode welche anhand der Item ID welche hier zwischengespeichert wird, diese
-	 * in der DB suchen geht
+	 * Methode welche anhand der Item ID welche hier zwischengespeichert wird, diese in der DB suchen geht
 	 * 
 	 * @param id
 	 * @return
@@ -67,4 +66,5 @@ public class ViewItemController implements Serializable {
 	public String returned() {
 		return "observationlist.jsf";
 	}
+
 }
